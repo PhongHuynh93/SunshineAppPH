@@ -101,7 +101,7 @@ public class ForecastFragment extends Fragment {
         int id = item.getItemId();
         Log.i(TAG, MainActivity.LIFE_CYCLES + " onOptionsItemSelected: ");
         if (id == R.id.action_refresh) {
-            return true;
+            new FetchWeatherTask().execute();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -245,7 +245,10 @@ public class ForecastFragment extends Fragment {
                     // Stream was empty.  No point in parsing.
                     return null;
                 }
+
                 forecastJsonStr = buffer.toString();
+
+                Log.i(TAG, MainActivity.LIFE_CYCLES + "doInBackground: " + forecastJsonStr);
             } catch (IOException e) {
                 Log.e(LOG_TAG, "Error ", e);
                 // If the code didn't successfully get the weather data, there's no point in attemping
