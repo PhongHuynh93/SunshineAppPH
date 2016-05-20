@@ -18,10 +18,4 @@ public class MainActivity extends AppCompatActivity {
         }
         Log.i(TAG, LIFE_CYCLES + " onCreate: ");
     }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.i(TAG, LIFE_CYCLES + " onStart: ");
-    }
 }
